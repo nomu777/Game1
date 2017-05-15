@@ -1,6 +1,7 @@
 package janken1;
 
-public class Judge {
+public class Judge extends Thread {
+	
 	/**
 	 * ジャンケンを開始する
 	 * 
@@ -8,8 +9,14 @@ public class Judge {
 	 * @param player2 判定対象プレイヤー２
 	 */
 	public void startJanken(Player player1, Player player2) {
+		
 		//ジャンケンの開始を宣言する
 		System.out.println("【ジャンケン開始！】\n");
+		
+		try {
+			Thread.sleep(1000);
+		} catch(InterruptedException e) {
+		}
 		
 		//ジャンケンを３回行う
 		for(int cnt = 0; cnt < 3; cnt++) {
@@ -29,7 +36,14 @@ public class Judge {
 				//引き分けの場合
 				System.out.println("引き分けです！\n" );
 			}
+			
+			try {
+				Thread.sleep(1000);
+			} catch(InterruptedException e) {
+			}
+			
 		}
+		
 		//ジャンケン終了宣言
 		System.out.println("【ジャンケン終了】\n");
 		
