@@ -66,6 +66,8 @@ public class Player {
 		return hand;
 	}
 	
+	
+	//勝ったかどうかの判断は審判が行う
 	/**
 	 * 審判から勝敗を聞く
 	 * 

@@ -8,7 +8,7 @@ public class Judge extends Thread {
 	 * @param player1 判定対象プレイヤー１
 	 * @param player2 判定対象プレイヤー２
 	 */
-	public void startJanken(Player player1, Player player2) {
+	public void startJanken(Player player1, Player player2) {      //引数にはmurata,yamadaが渡されている
 		
 		//ジャンケンの開始を宣言する
 		System.out.println("【ジャンケン開始！】\n");
@@ -29,7 +29,8 @@ public class Judge extends Thread {
 			if(winner != null) {
 				//勝者を表示する
 				System.out.println(winner.getName() + "が勝ちました！\n");
-				//買ったプレイヤーへ結果を伝える
+				//勝ったプレイヤーへ結果を伝える＝勝ったプレイヤーが審判から勝敗を聞く
+				//勝った場合はtrueを渡す
 				winner.notifyResult(true);
 				
 			} else {
@@ -75,6 +76,7 @@ public class Judge extends Thread {
 		int player2hand = player2.showHand();
 		
 		//それぞれの手を表示する
+		//現時点でジャンケンの手は定数となっているので、printHandメソッドで、ある定数が出た時にその定数に対応する手の名前を表示する
 		printHand(player1hand);
 		System.out.print(" vs. ");
 		printHand(player2hand);

@@ -1,5 +1,8 @@
 package janken1;
 
+//インスタンスの生成
+//ゲーム開始の宣言
+
 public class ObjectJanken {
 	public static void main(String[] args) {
 		
