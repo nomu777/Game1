@@ -23,6 +23,7 @@ public class Player {
 	 * @param name 名前
 	 */
 	public Player() {}
+	//呼び出される側のメソッドが引数を受け取る時は、必ず「型」を記載する
 	public Player(String name) {
 		this.name_ = name;
 	}
@@ -45,6 +46,9 @@ public class Player {
 	 * 
 	 * @return ジャンケンの手
 	 */
+	//ジャンケンの手を出す
+	//→グー、チョキ、パーどれかを変数に格納
+	//どの手が出るかは３分の１の確率→乱数とif文を使う
 	public int showHand() {
 		//プレイヤーの手
 		int hand = 0;
@@ -85,6 +89,8 @@ public class Player {
 	 * 
 	 * @return 買った回数
 	 */
+	//getterメソッドはフィールド値（クラスブロック内に宣言された変数）を取り出すために用いる
+	//getterメソッドで取り出すことにより、どのクラスからでも値を利用することが可能になる
 	public int getWinCount() {
 		return winCount_;
 	}

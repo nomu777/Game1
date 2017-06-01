@@ -8,6 +8,7 @@ public class Judge extends Thread {
 	 * @param player1 判定対象プレイヤー１
 	 * @param player2 判定対象プレイヤー２
 	 */
+	//publicにするメソッドは、他のクラスから呼び出されることを想定しているもの。
 	public void startJanken(Player player1, Player player2) {      //引数にはmurata,yamadaが渡されている
 		
 		//ジャンケンの開始を宣言する
@@ -67,9 +68,12 @@ public class Judge extends Thread {
 	 * @param player2 対象プレイヤー２
 	 * @return 勝ったプレイヤー。引き分けの場合はnullを返す
 	 */
+	//privateにするメソッドは、自クラスからのみアクセス可能にしたいもの
 	private Player judgeJanken(Player player1, Player player2) {
 		Player winner = null;
 		
+		//プレイヤーが手を出すのも審判が見ている範囲内で行う
+		//変数に格納することで、下のif文で比較可能
 		//プレイヤー１の手を出す
 		int player1hand = player1.showHand();
 		//プレイヤー２の手を出す
@@ -133,7 +137,6 @@ public class Judge extends Thread {
 	 * 
 	 * @param hand ジャンケンの手
 	 */
-	
 	private void printHand(int hand) {
 		switch(hand) {
 		case Player.STONE :
