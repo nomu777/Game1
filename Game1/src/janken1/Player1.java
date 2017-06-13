@@ -1,6 +1,6 @@
 package janken1;
 
-public class Player {
+public class Player1 {
 	
 	//ジャンケンの手を表す定数
 	public static final int STONE = 0;
@@ -22,9 +22,9 @@ public class Player {
 	 * 
 	 * @param name 名前
 	 */
-	public Player() {}
+	public Player1() {}
 	//呼び出される側のメソッドが引数を受け取る時は、必ず「型」を記載する
-	public Player(String name) {
+	public Player1(String name) {
 		this.name_ = name;
 	}
 	

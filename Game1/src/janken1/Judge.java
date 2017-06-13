@@ -9,7 +9,7 @@ public class Judge extends Thread {
 	 * @param player2 判定対象プレイヤー２
 	 */
 	//publicにするメソッドは、他のクラスから呼び出されることを想定しているもの。
-	public void startJanken(Player player1, Player player2) {      //引数にはmurata,yamadaが渡されている
+	public void startJanken(Player1 player1, Player1 player2) {      //引数にはmurata,yamadaが渡されている
 		
 		//ジャンケンの開始を宣言する
 		System.out.println("【ジャンケン開始！】\n");
@@ -25,7 +25,8 @@ public class Judge extends Thread {
 			System.out.println("【" + (cnt + 1) + "回戦目】");
 			
 			//プレイヤーの手を見て、どちらが勝ちかを判定する
-			Player winner = judgeJanken(player1, player2);
+			//Player型の変数にメソッドを代入しているので、judgeJankenメソッドには戻り値が必要。
+			Player1 winner = judgeJanken(player1, player2);
 			
 			if(winner != null) {
 				//勝者を表示する
@@ -50,7 +51,7 @@ public class Judge extends Thread {
 		System.out.println("【ジャンケン終了】\n");
 		
 		//最終的な勝者を判定する
-		Player finalWinner = judgeFinalWinner(player1, player2);
+		Player1 finalWinner = judgeFinalWinner(player1, player2);
 		
 		//結果の表示
 		System.out.print(player1.getWinCount() + "対" + player2.getWinCount() + "で");
@@ -69,8 +70,8 @@ public class Judge extends Thread {
 	 * @return 勝ったプレイヤー。引き分けの場合はnullを返す
 	 */
 	//privateにするメソッドは、自クラスからのみアクセス可能にしたいもの
-	private Player judgeJanken(Player player1, Player player2) {
-		Player winner = null;
+	private Player1 judgeJanken(Player1 player1, Player1 player2) {
+		Player1 winner = null;
 		
 		//プレイヤーが手を出すのも審判が見ている範囲内で行う
 		//変数に格納することで、下のif文で比較可能
@@ -87,14 +88,14 @@ public class Judge extends Thread {
 		System.out.print("\n");
 		
 		//プレイヤー１が勝つ場合
-		if((player1hand == Player.STONE && player2hand == Player.SCISSORS)
-				|| (player1hand == Player.SCISSORS && player2hand == Player.PAPER)
-				|| (player1hand == Player.PAPER && player2hand == Player.STONE))
+		if((player1hand == Player1.STONE && player2hand == Player1.SCISSORS)
+				|| (player1hand == Player1.SCISSORS && player2hand == Player1.PAPER)
+				|| (player1hand == Player1.PAPER && player2hand == Player1.STONE))
 		{
 			winner = player1;
-		} else if((player2hand == Player.STONE && player1hand == Player.SCISSORS)
-				|| (player2hand == Player.SCISSORS && player1hand == Player.PAPER)
-				|| (player2hand == Player.PAPER && player1hand == Player.STONE))
+		} else if((player2hand == Player1.STONE && player1hand == Player1.SCISSORS)
+				|| (player2hand == Player1.SCISSORS && player1hand == Player1.PAPER)
+				|| (player2hand == Player1.PAPER && player1hand == Player1.STONE))
 		{
 			winner = player2;
 		}
@@ -111,8 +112,8 @@ public class Judge extends Thread {
 	 * @param player2 判定対象プレイヤー２
 	 * @ruturn 勝ったプレイヤー。引き分けの場合はnullを返す
 	 */
-	private Player judgeFinalWinner(Player player1, Player player2) {
-		Player winner = null;
+	private Player1 judgeFinalWinner(Player1 player1, Player1 player2) {
+		Player1 winner = null;
 		
 		//Player1から勝ち数を聞く
 		int player1WinCount = player1.getWinCount();
@@ -139,15 +140,15 @@ public class Judge extends Thread {
 	 */
 	private void printHand(int hand) {
 		switch(hand) {
-		case Player.STONE :
+		case Player1.STONE :
 			System.out.print("グー");
 			break;
 			
-		case Player.SCISSORS :
+		case Player1.SCISSORS :
 			System.out.print("チョキ");
 			break;
 			
-		case Player.PAPER :
+		case Player1.PAPER :
 			System.out.print("パー");
 			break;
 			
