@@ -13,7 +13,7 @@ public class Player {
 	private Table table;
 	
 	/** 自分の手札 */
-	private Hand myHand = new Hand();
+	private HandCard myHand = new HandCard();
 	
 	/** 名前 */
 	private String name;
@@ -38,13 +38,18 @@ public class Player {
 	 */
 	public void play(Player nextPlayer) {
 		//次のプレイヤーに手札を出してもらう
-		Hand nextHand = nextPlayer.showHand();
+		HandCard nextHand = nextPlayer.showHand();
 		
 		//相手の手札からカードを１枚引く
 		Card pickedCard = nextHand.pickCard();
 		
 		//引いた結果を表示
 		System.out.println(this + ":" + nextPlayer + "さんから" + pickedCard + "を引きました！");
+		
+		try {
+			Thread.sleep(1000);
+		} catch(InterruptedException e) {
+		}
 		
 		//引いたカードを自分の手札に加え、同じ数のカードがあったら捨てる
 		dealCard(pickedCard);
@@ -57,6 +62,10 @@ public class Player {
 			//現在の手札を表示する
 			System.out.println(this + ":残りの手札は" + myHand + "です");
 		}
+		try {
+			Thread.sleep(1000);
+		} catch(InterruptedException e) {
+		}
 	}
 	
 	/**
@@ -65,7 +74,7 @@ public class Player {
 	 * @return 自分の手札
 	 */
 	
-	public Hand showHand() {
+	public HandCard showHand() {
 		//もしこの時点で手札が残り一枚ならば上がりとなるので宣言する
 		if(myHand.getNumberOfCards() == 1) {
 			master.declareWin(this);
@@ -93,10 +102,10 @@ public class Player {
 	 * @param card
 	 */
 	private void dealCard(Card card) {
-		//カードを自分の手札に加える
+		//引いたカードを自分の手札に加える
 		myHand.addCard(card);
 		
-		//今加えたカードと同じカードを探す
+		//今加えたカードと同じカードを探す　見つかった場合、二枚一組なので配列の要素数は２。
 		Card[] sameCards = myHand.findSameNumberCard();
 		
 		//同じカードの組み合わせが存在した場合
@@ -117,11 +126,3 @@ public class Player {
 		return name;
 	}
 }
-
-
-
-
-
-
-
-

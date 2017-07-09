@@ -9,6 +9,7 @@ public class OldMaid {
 		Table field = new Table();
 		
 		//プレイヤーの生成
+		//進行役やカードを捨てるテーブルの情報も必要なため、それぞれ引数として渡しておく
 		Player mori = new Player("森", master, field);
 		Player yamada = new Player("山田", master, field);
 		Player yano = new Player("矢野", master, field);
@@ -19,7 +20,7 @@ public class OldMaid {
 		master.registerPlayer(yano);
 		
 		//トランプを生成する
-		Hand trump = createTrump();
+		HandCard trump = createTrump();
 		
 		//ゲームの準備をする
 		master.prepareGame(trump);
@@ -33,8 +34,8 @@ public class OldMaid {
 	 * 
 	 * @return トランプを格納したHand
 	 */
-	private static Hand createTrump() {
-		Hand trump = new Hand();
+	private static HandCard createTrump() {
+		HandCard trump = new HandCard();
 		
 		//各スート５３枚のカードを生成する
 		for(int number = 1; number <= 13; number++) {
