@@ -12,7 +12,7 @@ public class ObjectJanken3 {
 		
 		Player3 p2 = new Player3("ジョージ");
 		//p2に渡す戦略クラスを生成する
-		Tactics p2Tactics = new RandomTactics();
+		Tactics p2Tactics = new AtodahsiTactics();
 		//p2に戦略クラスを渡す
 		p2.setTactics(p2Tactics);
 

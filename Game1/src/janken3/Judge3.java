@@ -39,14 +39,15 @@ public class Judge3 {
 					System.out.println("------------------");
 					janken = true;
 				}
+				
+				try {
+					Thread.sleep(1000);
+				} catch(InterruptedException e) {
+				}
+				
 			//あいこの時はもう一度ジャンケンを行う
 			} while(janken == true);
 
-			try {
-				Thread.sleep(1000);
-			} catch(InterruptedException e) {
-			}
-			
 			//どちらかが三勝したらループを抜ける
 			if(p1.getWinCount() == 3 || p2.getWinCount() == 3) {
 				loop = false;
@@ -54,6 +55,12 @@ public class Judge3 {
 		}
 
 		Player3 finalWinner = finalJudgeJanken(p1, p2);
+		
+		try {
+			Thread.sleep(1000);
+		} catch(InterruptedException e) {
+		}
+		
 		System.out.println(p1.getWinCount() + ":" + p2.getWinCount() + "で");
 		if(finalWinner != null) {
 			System.out.println(finalWinner.getName() + "の勝利");
