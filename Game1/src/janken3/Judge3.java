@@ -9,10 +9,8 @@ public class Judge3 {
 		} catch(InterruptedException e) {
 		}
 
-		boolean loop = true;
 		int count = 1;
-		while(loop == true) {
-			boolean janken = false;
+		while(true) {
 			do {
 				System.out.println((count) + "回目！");
 				count++;
@@ -33,11 +31,10 @@ public class Judge3 {
 					System.out.println(winner.getName() + "の勝ち\n");
 					System.out.println("------------------");
 					winner.notifyResult(true);
-					janken = false;
+					break;
 				} else {
 					System.out.println("あいこ！再勝負！\n");
 					System.out.println("------------------");
-					janken = true;
 				}
 				
 				try {
@@ -46,11 +43,11 @@ public class Judge3 {
 				}
 				
 			//あいこの時はもう一度ジャンケンを行う
-			} while(janken == true);
+			} while(true);
 
 			//どちらかが三勝したらループを抜ける
 			if(p1.getWinCount() == 3 || p2.getWinCount() == 3) {
-				loop = false;
+				break;
 			}
 		}
 
